@@ -5,7 +5,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 
-from polls.models import Question, Choice
+from polls.models import Question, Choice, Category
 
 '''
 def index(request):
@@ -18,10 +18,11 @@ def index(request):
 '''
 
 
-def index(request):
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    context = {'latest_question_list': latest_question_list}
-    return render(request, 'polls/index.html', context)
+# def index(request):
+#     latest_question_list = Question.objects.order_by('-pub_date')[:5]
+#     context = {'latest_question_list': latest_question_list}
+#     return render(request, 'polls/index.html', context)
+
 
 '''
 def detail(request, question_id):
@@ -60,3 +61,39 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+
+# 首页
+# 从models里导入Category类
+def index(request):
+    allcategory = Category.objects.all()  # 通过Category表查出所有分类
+    # 把查询出来的分类封装到上下文里
+    context = {
+        'allcategory': allcategory,
+    }
+    return render(request, 'polls/index.html', context)  # 把上下文传到index.html页面
+
+
+# 列表页
+def list(request, lid):
+    pass
+
+
+# 内容页
+def show(request, sid):
+    pass
+
+
+# 标签页
+def tag(request, tag):
+    pass
+
+
+# 搜索页
+def search(request):
+    pass
+
+
+# 关于我们
+def about(request):
+    pass
