@@ -49,7 +49,8 @@
                 -->
                 {% for category in allcategory %}
                     <li id="menu-item-117720" class="menu-item">
-                        <a href="list-{{ category.id }}.html">{{ category.name }}</a>
+{#                        <a href="list-{{ category.id }}.html">{{ category.name }}</a>#}
+                        <a href="{% url 'polls:index' %}list-{{ category.id }}.html">{{ category.name }}</a>
                     </li>
                 {% endfor %}
 
