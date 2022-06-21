@@ -5,7 +5,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 
-from polls.models import Question, Choice, Category
+from polls.models import Question, Choice, Category, Banner
 
 '''
 def index(request):
@@ -32,6 +32,12 @@ def detail(request, question_id):
         raise Http404("Question does not exist")
     return render(request, 'polls/detail.html', {'question': question})
 '''
+
+
+def html_page(request,path):
+    # print("path::"+request.path)
+    staticurl = "polls/digestion/"+path
+    return render(request,staticurl)
 
 
 def detail(request, question_id):
@@ -67,10 +73,12 @@ def vote(request, question_id):
 # 从models里导入Category类
 def index(request):
     allcategory = Category.objects.all()  # 通过Category表查出所有分类
-    # 把查询出来的分类封装到上下文里
+    banner = Banner.objects.filter(is_active=True)[0:4]#查询所有幻灯图数据，并进行切片
     context = {
         'allcategory': allcategory,
+        'banner':banner, #把查询到的幻灯图数据封装到上下文
     }
+
     return render(request, 'polls/index.html', context)  # 把上下文传到index.html页面
 
 
