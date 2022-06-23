@@ -8,39 +8,46 @@
                     <div id="featured" class="raxus-slider" data-autoplay="3000" data-keypress="false"
                          data-thumbnail="bottom">
                         <ul class="slider-relative" id="relative">
+{##}
+{#                            <li class="slide fix-width">#}
+{#                                <a href="https://www.django.cn/article/show-4.html" title="CentOS7下部署Django项目详细操作步骤">#}
+{#                                    <img src="/static/polls/picture/44.jpg" srcset="media/banner/44.jpg"#}
+{#                                         alt="CentOS7下部署Django项目详细操作步骤"#}
+{#                                         class="wp-post-image" width="370" height="290"/></a>#}
+{#                                <span class="text ani-left"><strong>CentOS7下部署Django项目详细操作步骤</strong></span>#}
+{#                            </li>#}
+{##}
+{#                            <li class="slide fix-width">#}
+{#                                <a href="https://www.django.cn/article/show-18.html" title="Django身份认证系统auth模块详解">#}
+{#                                    <img src="/static/polls/picture/auth.jpg" srcset="media/banner/auth.jpg"#}
+{#                                         alt="Django身份认证系统auth模块详解"#}
+{#                                         class="wp-post-image" width="370" height="290"/></a>#}
+{#                                <span class="text ani-left"><strong>Django身份认证系统auth模块详解</strong></span>#}
+{#                            </li>#}
+{##}
+{#                            <li class="slide fix-width">#}
+{#                                <a href="https://www.django.cn/article/show-11.html" title="如何扩展Django用户模型">#}
+{#                                    <img src="/static/polls/picture/ggg.jpg" srcset="media/banner/ggg.jpg" alt="如何扩展Django用户模型"#}
+{#                                         class="wp-post-image" width="370" height="290"/></a>#}
+{#                                <span class="text ani-left"><strong>如何扩展Django用户模型</strong></span>#}
+{#                            </li>#}
 
-                            <li class="slide fix-width">
-                                <a href="https://www.django.cn/article/show-4.html" title="CentOS7下部署Django项目详细操作步骤">
-                                    <img src="/static/polls/picture/44.jpg" srcset="media/banner/44.jpg"
-                                         alt="CentOS7下部署Django项目详细操作步骤"
-                                         class="wp-post-image" width="370" height="290"/></a>
-                                <span class="text ani-left"><strong>CentOS7下部署Django项目详细操作步骤</strong></span>
-                            </li>
+{#                            <li class="slide fix-width">#}
+{#                                <a href="https://www.django.cn/article/show-7.html" title="创建自己的第一个django项目">#}
+{#                                    <img src="/static/polls/picture/pycharm2.jpg" srcset="media/banner/pycharm2.jpg"#}
+{#                                         alt="创建自己的第一个django项目"#}
+{#                                         class="wp-post-image" width="370" height="290"/></a>#}
+{#                                <span class="text ani-left"><strong>创建自己的第一个django项目</strong></span>#}
+{#                            </li>#}
 
-                            <li class="slide fix-width">
-                                <a href="https://www.django.cn/article/show-18.html" title="Django身份认证系统auth模块详解">
-                                    <img src="/static/polls/picture/auth.jpg" srcset="media/banner/auth.jpg"
-                                         alt="Django身份认证系统auth模块详解"
-                                         class="wp-post-image" width="370" height="290"/></a>
-                                <span class="text ani-left"><strong>Django身份认证系统auth模块详解</strong></span>
-                            </li>
-
-                            <li class="slide fix-width">
-                                <a href="https://www.django.cn/article/show-11.html" title="如何扩展Django用户模型">
-                                    <img src="/static/polls/picture/ggg.jpg" srcset="media/banner/ggg.jpg" alt="如何扩展Django用户模型"
-                                         class="wp-post-image" width="370" height="290"/></a>
-                                <span class="text ani-left"><strong>如何扩展Django用户模型</strong></span>
-                            </li>
-
-                            <li class="slide fix-width">
-                                <a href="https://www.django.cn/article/show-7.html" title="创建自己的第一个django项目">
-                                    <img src="/static/polls/picture/pycharm2.jpg" srcset="media/banner/pycharm2.jpg"
-                                         alt="创建自己的第一个django项目"
-                                         class="wp-post-image" width="370" height="290"/></a>
-                                <span class="text ani-left"><strong>创建自己的第一个django项目</strong></span>
-                            </li>
-
-
+                            {% for b in banner %}
+                                <li class="slide fix-width">
+                                    <a href="{{ b.link_url }}" title="{{ b.text_info }}">
+                                        <img src="/media/{{ b.img }}" srcset="/media/{{ b.img }}" alt="{{ b.text_info }}"
+                                             class="wp-post-image" width="370" height="290"/></a>
+                                    <span class="text ani-left"><strong>{{ b.text_info }}</strong></span>
+                                </li>
+                            {% endfor %}
                     </div>
 
                 </div>

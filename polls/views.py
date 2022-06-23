@@ -73,7 +73,8 @@ def vote(request, question_id):
 # 从models里导入Category类
 def index(request):
     allcategory = Category.objects.all()  # 通过Category表查出所有分类
-    banner = Banner.objects.filter(is_active=True)[0:4]#查询所有幻灯图数据，并进行切片
+    banner = Banner.objects.filter(is_active=True)[0:5]#查询所有幻灯图数据，并进行切片
+
     context = {
         'allcategory': allcategory,
         'banner':banner, #把查询到的幻灯图数据封装到上下文
