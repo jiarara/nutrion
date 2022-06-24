@@ -1,14 +1,20 @@
 import datetime
 
+from django.contrib import admin
 from django.db import models
 
 # Create your models here.
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-
+from DjangoUeditor.models import UEditorField
 
 class Question(models.Model):
+    @admin.display(
+        boolean=True,
+        ordering='pub_date',
+        description='Published recently?',
+    )
     def __str__(self):
         return self.question_text
 
@@ -16,7 +22,8 @@ class Question(models.Model):
     pub_date = models.DateTimeField('date published')
 
     def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
 
 class Choice(models.Model):
@@ -74,8 +81,12 @@ class Article(models.Model):
     tags = models.ManyToManyField(Tag, verbose_name='标签', blank=True)
     # 使用外键关联标签表与标签是多对多关系
     img = models.ImageField(upload_to='article_img/%Y/%m/%d/', verbose_name='文章图片', blank=True, null=True)
-    body = models.TextField()
-
+    # body = models.TextField()
+    body = UEditorField('内容', width=800, height=500,
+                        toolbars="full", imagePath="upimg/", filePath="upfile/",
+                        upload_settings={"imageMaxSize": 1204000},
+                        settings={}, command=None, blank=True
+                        )
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='作者')
     """
     文章作者，这里User是从django.contrib.auth.models导入的。
