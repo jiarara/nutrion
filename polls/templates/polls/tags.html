@@ -5,16 +5,13 @@
         <section class="post-left">
 
           <div class="breadcrumb">您的位置：
-            <!--
-            <a itemprop="breadcrumb" href="/">首页</a> »<span class="current">Python</span></div>
-            -->
-            <a itemprop="breadcrumb" href="{% url 'polls:index' %}">首页</a> »
-            <span class="current">{{ cname }} </span></div>
+
+              <div class="breadcrumb">您的位置： <a itemprop="breadcrumb" href="{% url 'polls:index' %}">首页</a> » <span
+                      class="current">标签：{{ tname }}</span></div>
 
             <div class="index-main clearfix">
                 <div class="main-title">
-                   <!-- <h4 class="post-left-title">分类：Python</h4>-->
-                    <h4 class="post-left-title">分类：{{ cname}}</h4>
+                    <h4 class="post-left-title">标签：{{ tname }}</h4>
                 </div>
                 <div class="row">
 
@@ -23,8 +20,8 @@
                             <div class="col-md-4">
                                 <div class="thumbnail">
                                     <a href="{% url 'polls:index' %}show-{{ list.id }}.html" title="{{ list.title }}">
-                                        <img src="media/{{ list.img }}"
-                                             srcset="media/{{ list.img }}"
+                                        <img src="{% url 'polls:index' %}media/{{ list.img }}"
+                                             srcset="{% url 'polls:index' %}media/{{ list.img }}"
                                              alt="{{ list.title }}" class="wp-post-image" width="240" height="160"/></a>
                                 </div>
                             </div>
@@ -44,32 +41,7 @@
                         </div>
                     {% endfor %}
 
-{#                    <div class="article-box clearfix excerpt-1">#}
-{#                        <div class="col-md-4">#}
-{#                            <div class="thumbnail">#}
-{#                                <a href="/show-2.html" title="博客列入12家估值飙升互联网创业企业 Quora第一">#}
-{#                                    <img src="static/picture/quora.png"#}
-{#                                         srcset="media/article_img/2018/10/07/quora.png"#}
-{#                                         alt="博客列入12家估值飙升互联网创业企业 Quora第一" class="wp-post-image" width="240"#}
-{#                                         height="160"/></a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="col-md-8">#}
-{#                            <h2><a href="/show-2.html" target="_blank"#}
-{#                                   title="博客列入12家估值飙升互联网创业企业 Quora第一">博客列入12家估值飙升互联网创业企业 Quora第一</a></h2>#}
-{#                            <p class="txtcont hidden-xs"><a href="/show-2.html"#}
-{#                                                            target="_blank"#}
-{#                                                            title="博客列入12家估值飙升互联网创业企业 Quora第一">美国科技博客Business#}
-{#                                Insider今天刊文称，Facebook、Zynga和Groupon等创业企业的估值已经大幅上升，而风险投资公司开始将目光瞄准其他一些公司，这导致许多公司的估值近期大幅上升。</a>#}
-{#                            </p>#}
-{#                            <div class="meta"><span class="label label-info"><a#}
-{#                                    href="/list-2.html">Python</a></span>#}
-{#                                <time class="item"><i#}
-{#                                        class="fa fa-clock-o"></i>2018年10月07日#}
-{#                                </time>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
+
 
                     <div class="pagination">
                         <ul>
@@ -101,25 +73,7 @@
                         </ul>
                     </div>
 
-{#                    <div class="pagination">#}
-{#                        <ul>#}
-{##}
-{#                            <li class="prev-page"></li>#}
-{##}
-{##}
-{#                            <li class="active"><span>1</span></li>#}
-{##}
-{##}
-{#                            <li><a href="?page=2">2</a></li>#}
-{##}
-{##}
-{#                            <li class="next-page"><a href="?page=2">下一页</a></li>#}
-{##}
-{#                        </ul>#}
-{#                    </div>#}
 
-
-                    <!-- /文章列表 -->
         </section>
         <!-- /post-left -->
         <!-- /post-right -->
