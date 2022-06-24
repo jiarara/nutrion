@@ -5,7 +5,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 
-from polls.models import Question, Choice, Category, Banner
+from polls.models import Question, Choice, Category, Banner, Article, Tag, Link
 
 '''
 def index(request):
@@ -74,10 +74,24 @@ def vote(request, question_id):
 def index(request):
     allcategory = Category.objects.all()  # 通过Category表查出所有分类
     banner = Banner.objects.filter(is_active=True)[0:5]#查询所有幻灯图数据，并进行切片
+    tui = Article.objects.filter(tui__id=1)[:3]#查询推荐位ID为1的文章
+    allarticle = Article.objects.all().order_by('-id')[0:10]
+    #hot = Article.objects.all().order_by('?')[:10]#随机推荐
+    #hot = Article.objects.filter(tui__id=3)[:10]   #通过推荐进行查询，以推荐ID是3为例
+    hot = Article.objects.all().order_by('views')[:10]#通过浏览数进行排序
+    remen = Article.objects.filter(tui__id=2)[:6]
+    tags = Tag.objects.all()
 
+    link = Link.objects.all()
     context = {
         'allcategory': allcategory,
         'banner':banner, #把查询到的幻灯图数据封装到上下文
+        'tui':tui,
+        'allarticle': allarticle,
+        'hot':hot,
+        'remen':remen,
+        'tags':tags,
+        'link':link,
     }
 
     return render(request, 'polls/index.html', context)  # 把上下文传到index.html页面
