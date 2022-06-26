@@ -75,8 +75,9 @@ def vote(request, question_id):
 def index(request):
     # allcategory = Category.objects.all()  # 通过Category表查出所有分类
     banner = Banner.objects.filter(is_active=True)[0:5]#查询所有幻灯图数据，并进行切片
-    tui = Article.objects.filter(tui__id=1)[:3]#查询推荐位ID为1的文章
-    allarticle = Article.objects.all().order_by('-id')[0:10]
+    tui = Article.objects.filter(tui__id=4)[:3]#查询推荐位ID为1的文章
+    # allarticle = Article.objects.all().order_by('-id')[0:10]
+    allarticle = Article.objects.all()
     #hot = Article.objects.all().order_by('?')[:10]#随机推荐
     #hot = Article.objects.filter(tui__id=3)[:10]   #通过推荐进行查询，以推荐ID是3为例
     hot = Article.objects.all().order_by('views')[:10]#通过浏览数进行排序
@@ -84,17 +85,14 @@ def index(request):
     # tags = Tag.objects.all()
 
     link = Link.objects.all()
-    # context = {
-    #     'allcategory': allcategory,
-    #     'banner':banner, #把查询到的幻灯图数据封装到上下文
-    #     'tui':tui,
-    #     'allarticle': allarticle,
-    #     'hot':hot,
-    #     'remen':remen,
-    #     'tags':tags,
-    #     'link':link,
-    # }
-
+    page = request.GET.get('page')
+    paginator = Paginator(allarticle, 8)
+    try:
+        allarticle = paginator.page(page) # 获取当前页码的记录
+    except PageNotAnInteger:
+        allarticle = paginator.page(1) # 如果用户输入的页码不是整数时,显示第1页的内容
+    except EmptyPage:
+        allarticle = paginator.page(paginator.num_pages) # 如果用户输入的页数不在系统的页码列表中时,显示最后一页的内容
     return render(request, 'polls/index.html', locals())  # 把上下文传到index.html页面
 
 
@@ -163,11 +161,11 @@ def search(request):
 
 # 关于我们
 def about(request):
-    allcategory = Category.objects.all()
+    # allcategory = Category.objects.all()
     return render(request, 'polls/page.html',locals())
 
 def global_variable(request):
     allcategory = Category.objects.all()
-    remen = Article.objects.filter(tui__id=2)[:6]
+    remen = Article.objects.filter(tui__id=4)[:6]
     tags = Tag.objects.all()
     return locals()
