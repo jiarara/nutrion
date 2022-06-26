@@ -3,9 +3,9 @@
     <!-- /主体 -->
     <div id="main-container" class="container clearfix">
         <section class="post-left">
-            <div class="breadcrumb">您的位置： <a itemprop="breadcrumb" href="/">首页</a> » <a
-                    href="/list-2.html">Python</a> »
-                <span class="current">正文</div>
+            <div class="breadcrumb">您的位置： <a itemprop="breadcrumb" href="{% url 'polls:index' %}">首页</a> »
+                <span class="current">标签：{{ tname }}</span></div>
+
             <div class="post-main clearfix">
                 <h1 class="post-title">网站设计-不只是门面漂亮这么简单</h1>
                 <div class="post-con clearfix">
