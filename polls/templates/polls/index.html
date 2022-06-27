@@ -35,11 +35,11 @@
                     <div class="hotread ">
                         <div class="title">推荐阅读</div>
 
-                        <div class="caption">
-                            <h4><a href="/show-2.html" title="博客列入12家估值飙升互联网创业企业 Quora第一" rel="bookmark">博客列入12家估值飙升互联网创业企业
-                                Quora第一</a></h4>
-                            <p>美国科技博客Business Insider今天刊文称，Facebook、Zynga和Groupon等创业企业的估值已经大幅上升，而风险投资公司开始将目光...</p>
-                        </div>
+{#                        <div class="caption">#}
+{#                            <h4><a href="/show-2.html" title="博客列入12家估值飙升互联网创业企业 Quora第一" rel="bookmark">博客列入12家估值飙升互联网创业企业#}
+{#                                Quora第一</a></h4>#}
+{#                            <p>美国科技博客Business Insider今天刊文称，Facebook、Zynga和Groupon等创业企业的估值已经大幅上升，而风险投资公司开始将目光...</p>#}
+{#                        </div>#}
                         {% for t in tui %}
                             <div class="caption">
                                 <h4><a href="{% url 'polls:index' %}show-{{ t.id }}.html" title="{{ t.title }}"
@@ -63,36 +63,13 @@
                 </div>
                 <div class="row">
 
-                    <div class="article-box clearfix excerpt-1">
-                        <div class="col-md-4">
-                            <div class="thumbnail">
-                                <a href="/show-12.html" title="30个别出心裁的WordPress设计">
-                                    <img src="static/polls/picture/wpress29.jpg"
-                                         srcset="media/article_img/2018/10/07/wpress29.jpg"
-                                         alt="30个别出心裁的WordPress设计" class="wp-post-image" width="240" height="160"/></a>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <h2><a href="/show-12.html" target="_blank"
-                                   title="30个别出心裁的WordPress设计">30个别出心裁的WordPress设计</a>
-                            </h2>
-                            <p class="txtcont hidden-xs"><a href="/" target="_blank"
-                                                            title="30个别出心裁的WordPress设计">使用WordPress的顶级网页设计师并不在少数，WordPress社区的创造力也不可小觑。下面我们就来看看其中一些WordPress牛人们是怎样设计自己的网站的吧。</a>
-                            </p>
-                            <div class="meta"><span class="label label-info"><a
-                                    href="/">Linux</a></span>
-                                <time class="item"><i class="fa fa-clock-o"></i>2018年10月07日
-                                </time>
-                            </div>
-                        </div>
-                    </div>
                     {% for a in allarticle %}
                         <div class="article-box clearfix excerpt-1">
                             <div class="col-md-4">
                                 <div class="thumbnail">
                                     <a href="{% url 'polls:index' %}show-{{ a.id }}.html" title="{{ a.title }}">
-                                        <img src="media/{{ a.img }}"
-                                             srcset="media/{{ a.img }}"
+                                        <img src="/media/{{ a.img }}"
+                                             srcset="/media/{{ a.img }}"
                                              alt="{{ a.title }}" class="wp-post-image" width="240" height="160"/></a>
                                 </div>
                             </div>
@@ -109,10 +86,42 @@
                             </div>
                         </div>
                     {% endfor %}
+                    <div class="pagination">
+                        <ul>
+                            {% if allarticle.has_previous %}
+                                <li class="prev-page"><a href="?page={{ allarticle.previous_page_number }}">上一页</a></li>
+                            {% else %}
+                                <li class="prev-page"></li>
+                            {% endif %}
 
+
+                            {% for num in allarticle.paginator.page_range %}
+                                {% if num %}
+                                    {% if num == allarticle.number %}
+                                        <li class="active"><span>{{ num }}</span></li>
+                                    {% else %}
+                                        <li><a href="?page={{ num }}">{{ num }}</a></li>
+                                    {% endif %}
+                                {% else %}
+                                    <li class="disabled"><span>...</span></li>
+                                {% endif %}
+                            {% endfor %}
+
+
+                            {% if allarticle.has_next %}
+                                <li class="next-page"><a href="?page={{ allarticle.next_page_number }}">下一页</a></li>
+                            {% else %}
+                                <li class="prev-page"></li>
+                            {% endif %}
+                        </ul>
+                    </div>
 
 
                 </div>
+
+
+
+
                 <!-- /文章列表 -->
         </section>
         <!-- /post-left -->
@@ -123,7 +132,7 @@
                 <h4 class="post-right-title">热门文章排行</h4>
                 <ol class="hot-list">
 
-                    <li><a href="/show-3.html" title="微软发布IE10预览版 或增加IE5浏览模式 提供下载">微软发布IE10预览版 或增加IE5浏览模式 提供下载</a></li>
+{#                    <li><a href="/show-3.html" title="微软发布IE10预览版 或增加IE5浏览模式 提供下载">微软发布IE10预览版 或增加IE5浏览模式 提供下载</a></li>#}
                     {% for h in hot %}
                         <li><a href="{% url 'polls:index' %}show-{{ h.id }}.html" title="{{ h.title }}">{{ h.title }}</a></li>
                     {% endfor %}
@@ -141,7 +150,7 @@
             <div class="title"><h3>友情链接：</h3></div>
             <ul class="clears">
 
-                <li><a href="https://www.django.cn/" target="_blank">Django中文网</a></li>
+{#                <li><a href="https://www.django.cn/" target="_blank">Django中文网</a></li>#}
 
                 {% for l in link %}
                     <li><a href="{{ l.linkurl }}" target="_blank">{{ l.name }}</a></li>

@@ -107,8 +107,8 @@
                             <li>
                                 <div class="pic">
                                     <a href="{% url 'polls:index' %}show-{{ h.id }}.html" title="{{ h.title }}">
-                                        <img src="{% url 'polls:index' %}media/{{ h.img }}"
-                                             srcset="{% url 'polls:index' %}media/{{ h.img }}"
+                                        <img src="/media/{{ h.img }}"
+                                             srcset="/media/{{ h.img }}"
                                              alt="{{ h.title }}" class="wp-post-image" width="145" height="100"/></a>
                                 </div>
                                 <a class="descript " href="{% url 'polls:index' %}show-{{ h.id }}.html" rel="bookmark"
