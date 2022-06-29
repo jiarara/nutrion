@@ -20,12 +20,13 @@ from django.urls import include, path, re_path
 from django.views.static import serve
 #导入配置文件里的文件上传配置
 from django.conf import settings
-
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
     path('ueditor/', include('DjangoUeditor.urls')), #添加DjangoUeditor的URL
     re_path('^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),#增加此行
+    # path('accounts/login/', auth_views.LoginView.as_view()),
 
 ]   #       +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

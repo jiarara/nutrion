@@ -1,11 +1,14 @@
+from django.contrib.auth import authenticate
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 
+from nutrion import settings
 from polls.models import Question, Choice, Category, Banner, Article, Tag, Link
 
 '''
@@ -68,11 +71,16 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
-
+def login_check(request):
+    print( request.user.username)
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
 
 # 首页
 # 从models里导入Category类
+@login_required
 def index(request):
+    # login_check(request)
     # allcategory = Category.objects.all()  # 通过Category表查出所有分类
     banner = Banner.objects.filter(is_active=True)[0:5]#查询所有幻灯图数据，并进行切片
     tui = Article.objects.filter(tui__id=4)[:3]#查询推荐位ID为1的文章
