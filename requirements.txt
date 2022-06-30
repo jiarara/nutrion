@@ -1,5 +1,10 @@
 asgiref==3.5.2
+beautifulsoup4==4.11.1
 Django==4.0.5
+DjangoUeditor==1.8.143
+fake-useragent==0.1.11
 Pillow==9.1.1
+six==1.16.0
+soupsieve==2.3.2.post1
 sqlparse==0.4.2
 tzdata==2022.1
