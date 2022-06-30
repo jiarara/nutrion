@@ -83,10 +83,18 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'nutrion',
+    #     'USER': 'root',
+    #     'PASSWORD': 'Jia@844810',
+    #     'HOST': 'localhost',
+    #     'PORT': '3306',
+    # }
 }
 
 
-# Password validation
+# Password validation  http://114.115.255.110:8000/polls/
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
