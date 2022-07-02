@@ -78,7 +78,7 @@ def login_check(request):
 
 # 首页
 # 从models里导入Category类
-@login_required
+#@login_required
 def index(request):
     # login_check(request)
     # allcategory = Category.objects.all()  # 通过Category表查出所有分类

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=&b2+9f2t_!2afxez=k%q^1%u8u(g01y7)+@-9zm1vgocamk!^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -127,16 +127,19 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
-STATIC_URL = 'static/'
-
+#这个是设置静态文件夹目录的路径
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+STATIC_URL = '/static/'
+STATIC_ROOT = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #设置文件上传路径，图片上传、文件上传都会存放在此目录里
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_URL ='login.html'
-
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None

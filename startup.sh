@@ -15,5 +15,6 @@ python manage.py runserver #默认使用8000端口
 #uwsgi --stop uwsgi.pid
 #uwsgi --reload uwsgi.pid
 #./nginx -s reload
-
+#python manage.py collectstatic
+#python manage.py loaddata data1.json
 # netstat -ntlp
