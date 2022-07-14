@@ -18,6 +18,8 @@
     <meta name='robots' content='index,follow'/>
     <meta name="keywords" content="人体器官消化与吸收，减肥，食物营养">
     <meta name="description" content="传播营养知识，深入解析营养与疾病关系，提升全民健康意识，预防疾病发生">
+
+    <link rel="stylesheet" type="text/css"  href='{% static "polls/css/zoom.css" %}' >
 </head>
 <body class="home blog site-layout-2">
 <!-- 头部 -->
@@ -62,15 +64,25 @@
         · <a href="http://www.miibeian.gov.cn" target="_blank">备17023990号</a> 版权所有 © 营养与健康
     </div>
 </footer>
+<!--
 <script src="{% static "polls/js/bundle.js" %}"></script>
+ -->
 <script type="text/javascript" src="{% static "polls/js/view-history.js" %}"></script>
 <script type='text/javascript' src="{% static "polls/js/push.js" %}"></script>
 <script type='text/javascript' src='{% static "polls/js/jquery.min.js" %}'></script>
+
 <script type='text/javascript' src='{% static "polls/js/bootstrap.min.js" %}'></script>
+
 <script type='text/javascript' src='{% static "polls/js/raxus-slider.min.js" %}'></script>
+<!--
 <script type='text/javascript' src='{% static "polls/js/loader.js" %}'></script>
+ -->
 <script type='text/javascript' src='{% static "polls/js/bj-lazy-load.min.js" %}'></script>
 <script type='text/javascript' src='{% static "polls/js/os.js" %}'></script>
 
+<script type='text/javascript' src='{% static "polls/js/zoom.js" %}'></script>
+<script>
+    $('.article-content img').attr('data-action',"zoom")
+</script>
 </body>
 </html>

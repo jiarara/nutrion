@@ -21,8 +21,9 @@ from django.views.static import serve
 #导入配置文件里的文件上传配置
 from django.conf import settings
 from django.contrib.auth import views as auth_views
-
+from polls import views
 urlpatterns = [
+    path('', views.index, name='index'),#网站首页
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
     path('ueditor/', include('DjangoUeditor.urls')), #添加DjangoUeditor的URL
