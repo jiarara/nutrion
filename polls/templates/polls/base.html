@@ -6,7 +6,7 @@
     <meta http-equiv="x-dns-prefetch-control" content="on"/>
     <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+          content="width=device-width, initial-scale=1.0, user-scalable=1, minimum-scale=1.0, maximum-scale=10">
     <meta name="apple-mobile-web-app-title" content="人体器官消化与吸收，减肥，食物营养">
     <title>营养科普与减肥</title>
 
@@ -18,18 +18,24 @@
     <meta name='robots' content='index,follow'/>
     <meta name="keywords" content="人体器官消化与吸收，减肥，食物营养">
     <meta name="description" content="传播营养知识，深入解析营养与疾病关系，提升全民健康意识，预防疾病发生">
-
+ <!--
+    <link rel="stylesheet" type="text/css"  href='{% static "polls/css/zoom.css" %}' >
+    -->
     <link rel="stylesheet" type="text/css"  href='{% static "polls/css/zoom.css" %}' >
 </head>
 <body class="home blog site-layout-2">
 <!-- 头部 -->
 <header class="fix-wrap" id="fix-wrap">
-    <div class="fix-main clearfix pr" id="fix-main" _hover-ignore="1"><a href="/" class="index-logo">
-        <img src="{% static "polls/picture/logo.png" %}" alt="营养与健康"></a>
+    <div class="fix-main clearfix pr" id="fix-main" _hover-ignore="1" >
+        <a href="/" class="index-logo" style="display:inline ">
+        <img src="{% static "polls/picture/logo.png" %}" alt="营养与健康">
+
+     </a>
+        <img src="/static/polls/picture/erweima.png"  alt="微信二维码-互联网的一些事" width="50" height="50">
         <nav class="nav fl">
             <ul id="fix-list" class="fix-list clearfix">
 
-                <li id="menu-item-24086" class="menu-item"><a href="/polls">首页</a></li>
+                <li id="menu-item-24086" class="menu-item"><a href="/">首页</a></li>
                 <!--
                                 <li id="menu-item-117720" class="menu-item">
                                     <a href="/list-1.html">Django</a></li>
@@ -59,9 +65,9 @@
 
 <!-- 底部 -->
 <footer class="footer">
-    <div class="copyright"> © 2010- 2018 · All Rights Reserved
-        · <a href="https://www.django.cn">营养与健康</a>
-        · <a href="http://www.miibeian.gov.cn" target="_blank">备17023990号</a> 版权所有 © 营养与健康
+    <div class="copyright"> © 2020- 2030 · All Rights Reserved
+        · <a href="http://nutrition-health.cn/">营养与健康</a>
+        · <a href="http://www.miibeian.gov.cn" target="_blank">粤ICP备2022088196号</a> 版权所有 © 营养与健康
     </div>
 </footer>
 <!--
@@ -79,10 +85,14 @@
  -->
 <script type='text/javascript' src='{% static "polls/js/bj-lazy-load.min.js" %}'></script>
 <script type='text/javascript' src='{% static "polls/js/os.js" %}'></script>
-
+<!--
 <script type='text/javascript' src='{% static "polls/js/zoom.js" %}'></script>
+-->
+<script type='text/javascript' src='{% static "polls/js/zoom-vanilla.min.js" %}'></script>
 <script>
     $('.article-content img').attr('data-action',"zoom")
+    $('#fix-main img').attr('data-action',"zoom")
+
 </script>
 </body>
 </html>

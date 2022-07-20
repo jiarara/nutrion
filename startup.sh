@@ -18,3 +18,6 @@ python manage.py runserver #默认使用8000端口
 #python manage.py collectstatic
 #python manage.py loaddata data1.json
 # netstat -ntlp
+# 多窗口tmux
+现在按下你 Tmux 的 PREFIX 键（默认是 Ctrl+B），再按 d 从 Tmux 中脱离出来，这样即使 ssh 断开连接了也能保持后台运行，想查错也可以用
+#goaccess  -f /usr/local/nginx/logs/access.log -a > /usr/local/nginx/html/stat/index.html

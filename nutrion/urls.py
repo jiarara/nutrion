@@ -24,6 +24,7 @@ from django.contrib.auth import views as auth_views
 from polls import views
 urlpatterns = [
     path('', views.index, name='index'),#网站首页
+    path('oauth/', include('oauth.urls')),#网站首页
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
     path('ueditor/', include('DjangoUeditor.urls')), #添加DjangoUeditor的URL

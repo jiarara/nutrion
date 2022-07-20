@@ -157,8 +157,9 @@
     this._overlay.className = 'zoom-overlay'
 
   //  document.body.appendChild(this._overlay)
-    this._targetImageWrap.parentNode.insertBefore(this._overlay,this._targetImageWrap)
-
+    document.body.appendChild(this._overlay)
+   // this._targetImageWrap.parentNode.insertBefore(this._overlay,this._targetImageWrap)
+   // this._targetImageWrap.parentNode.parentNode.insertBefore(this._overlay,this._targetImageWrap.parentNode)
     this._calculateZoom()
     this._triggerAnimation()
   }
