@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'DjangoUeditor',#注册APP应用
-    ‘oauth’,#授权验证
+    'oauth',#授权验证
+    'accounts',#授权验证
 
 ]
 
