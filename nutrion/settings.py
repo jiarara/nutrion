@@ -40,12 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'DjangoUeditor',#注册APP应用
     'oauth',#授权验证
     'accounts',#授权验证
 
 ]
-
+SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -145,5 +146,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #设置文件上传路径，图片上传、文件上传都会存放在此目录里
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-LOGIN_URL ='login.html'
+LOGIN_URL ='accounts/login.html'
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
