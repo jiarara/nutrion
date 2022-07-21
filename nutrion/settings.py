@@ -13,7 +13,6 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-import oauth
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -42,11 +41,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'DjangoUeditor',#注册APP应用
-    'oauth',#授权验证
-    'accounts',#授权验证
-
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.weibo',
+    'allauth.socialaccount.providers.weixin',
+    'bootstrapform',
 ]
 SITE_ID = 1
+AUTHENTICATION_BACKENDS = (
+    # Django使用，独立于allauth
+    'django.contrib.auth.backends.ModelBackend',
+    # 配置 allauth 独有的认证方法，如 email 登录
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -84,10 +93,10 @@ WSGI_APPLICATION = 'nutrion.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    #'default': {
+    # 'default': {
     #    'ENGINE': 'django.db.backends.sqlite3',
-     #   'NAME': BASE_DIR / 'db.sqlite3',
-    #}
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'nutrion',
@@ -95,7 +104,7 @@ DATABASES = {
         'PASSWORD': 'Jia@844810',
         'HOST': '114.115.255.110',
         'PORT': '3306',
-    }
+   }
 }
 
 
@@ -146,5 +155,30 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #设置文件上传路径，图片上传、文件上传都会存放在此目录里
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-LOGIN_URL ='accounts/login.html'
+LOGIN_URL ='account/login.html'
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  # 可以使用用户名或邮箱登录
+ACCOUNT_EMAIL_REQUIRED = True  # 必须设置电子邮箱
+LOGIN_REDIRECT_URL = '/'  # 登录成功后的跳转地址
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+# 发送邮件配置项
+# smpt服务器地址
+EMAIL_HOST = 'smtp.163.com'
+# 端口
+EMAIL_PORT = 25
+# 发送邮件的邮箱
+EMAIL_HOST_USER = 'jiayidongbinbin@163.com'
+# 在邮箱中设置的客户端授权密码
+EMAIL_HOST_PASSWORD = 'CEECHPPHGISRZNGQ'
+#CEECHPPHGISRZNGQ
+# 收件人看到的发件人
+EMAIL_FROM = 'nani<jiayidongbinbin@163.com>'
+# 报错此项必须加上
+DEFAULT_FROM_EMAIL = 'jiayidongbinbin@163.com'
+ACCOUNT_EMAIL_VERIFICATION='mandatory'
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION='True'
